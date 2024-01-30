@@ -36,8 +36,13 @@ const CorpSchema = new Schema({ // Create a UserSchema
     service: {
         type: String,
         enum: serviceValues,
-default: ""    }
-    
+default: ""    },
+company_url: {
+    type: String,
+    required: false,
+    unique: false,
+    default: ""
+}    
 });
 
 

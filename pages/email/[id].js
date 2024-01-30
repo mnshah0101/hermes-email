@@ -20,7 +20,7 @@ const Index = () => {
       <Header />
       {/* End Header */}
       {/* Main */}
-      <main className="wrapper">
+      <main className="wrapper" >
         <EmailEdit id={id} />
        
        

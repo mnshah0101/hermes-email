@@ -5,11 +5,21 @@ import { set } from "mongoose";
 const serviceData = [
   {
     id: 1,
+    name: "Bundesliga Matchday 18: RB Leipzig vs. Bayer Leverkusen",
     imageUrl: "https://ci3.googleusercontent.com/meips/ADKq_NZoNSsoeca5R2ZpTjzU_Hqc43Te1lWRCPqEyKFsR4hpWr-Z3yQ0bj0_as8Qrs6r8tlw7rIh5UsZ-ScBTfj2KplVDdSHoLYw3aVpTfjVokSIbnP3aWd6jCnXkvAv=s0-d-e1-ft#https://news.bundesliga.com/imgproxy/img/2041575200/xavi_wittz_600.jpg", // Update with actual image path
-    desc: "Subplots abound when RB Leipzig host Bundesliga leaders Bayer Leverkusen in Matchday 18's headline fixture on Saturday. Can Leipzig get back on track? Will Leverkusen stay unbeaten? Who will win out between respective December Rookie and Player of the Month winners Xavi and Florian Wirtz? You do not want to miss it!"
+    desc: "Subplots abound when RB Leipzig host Bundesliga leaders Bayer Leverkusen in Matchday 18's headline fixture on Saturday. Can Leipzig get back on track? Will Leverkusen stay unbeaten? Who will win out between respective December Rookie and Player of the Month winners Xavi and Florian Wirtz? You do not want to miss it!",
+    button: "Read More",
+    button_link: "https://www.bundesliga.com/en/bundesliga/news/rb-leipzig-bayer-leverkusen-live-line-ups-stats-patrik-schick-patrick-schick-19129"
   },
   // ... other services
 ];
+
+const email_header = {
+  logo:'https://hermes-email-logos.s3.amazonaws.com/companyLogo_black_hermes_text.png'
+}
+
+
+
 
 const override = {
   display: "none",
@@ -35,6 +45,9 @@ const DragDrop = () => {
       id: newId,
       imageUrl: "", // Provide a default image path
       desc: "Description of new service.",
+      name: "New Service",
+      button: "Read More",
+      button_link: "https://www.hermesgroup.email"
     };
     setServices([...services, newService]);
   };
@@ -103,16 +116,26 @@ const DragDrop = () => {
     <>
      <PuffLoader id="puffloader" cssOverride={override} color="#36d7b7" />
     
-    <section id="services" className="section services-section bg-gray">
+    <section id="services" className="section services-section" style={{backgroundColor:"#F4F5F6"}}>
+
+      
              
 
 
-      <div className="container">
-        <SectionTitle heading={"Your Newsletter"} subHeading={"Services"} />
-        <div className="row gy-4">
+      <div className="container" >
+        <h1 className="title w-100 text-center text-black pb-4">Email Editor</h1>
+        <div className="row gy-4 d-flex justify-content-center" >
+          
+          <div className="col-8">
+            <div className="email-header">
+              <img style={{height:"100px", width:"auto"}} src={email_header.logo} alt="Hermes Group" />
+            </div>
+      
+          </div>
+          
           {services.map((service) => (
-            <div className="col-12 centered-col" key={service.id}>
-              <div className="feature-box-01" style={{ textAlign: 'center', height: '568px', position: 'relative' }}>
+            <div className="col-8" key={service.id}>
+              <div className="feature-box-01 d-flex flex-column justify-content-center align-items-center" style={{ textAlign: 'center', height: '668px', position: 'relative' }}>
               <button 
   onClick={() => deleteService(service.id)}
   style={{
@@ -146,7 +169,7 @@ const DragDrop = () => {
                 />) : (
                   
                   <div className="form" >
-  <input type="file" onChange={(e) => handleImageUpload(e, service.id)} / > 
+  <input className="" type="file" onChange={(e) => handleImageUpload(e, service.id)} / > 
   <p>Click Here To  Upload Your Image</p>
 </div>
                   
@@ -166,6 +189,14 @@ const DragDrop = () => {
                   >
                     {service.desc}
                   </p>
+                 
+                    <h6
+                    contentEditable
+                    onBlur={(e) => handleServiceUpdate(service.id, 'button', e.target.innerText)}
+                    style={{ paddingTop: '20px' }}
+                  >
+                    {service.button}
+                  </h6>
                 </div>
               </div>
             </div>

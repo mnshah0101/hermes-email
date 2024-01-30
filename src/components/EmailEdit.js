@@ -14,8 +14,9 @@ import Message from "./Message";
 
 const EmailEdit = (props) => {
   const [value, setValue] = useState('');
-  const [message, setMessage] = useState('');
   const [active, setActive] = useState(false);
+
+  const { data: session, status } = useSession()
    
 
   const router = useRouter()
@@ -38,20 +39,15 @@ const EmailEdit = (props) => {
 
 
  return (
-  <section id="skill" className="section experience-section">
-      <Message message={message} active={active} >
-                <button onClick={(e)=>setActive(false)} className='px-btn px-btn-theme'>{message}</button>
-              </Message>
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-        </div>
-      </div>
-      <div className="row">
+  <section id="skill" className="section experience-section" >
+     
+    <div className="container" >
+     
+      <div className="row"  >
         <DragDrop />
       </div>
 
-      <div className="row">
+      <div className="row" >
         </div>
 
 
