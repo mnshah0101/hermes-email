@@ -1,0 +1,1 @@
+{"c":["pages/email/[id]","webpack"],"r":["pages/emailhistory"],"m":["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=%2FUsers%2Fmoksh%2FDesktop%2FHermes%2Fhermes-email%2Fpages%2Femailhistory%2Findex.js&page=%2Femailhistory!","./pages/emailhistory/index.js","./src/components/History.js"]}

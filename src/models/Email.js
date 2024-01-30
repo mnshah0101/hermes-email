@@ -10,11 +10,11 @@ const EmailSchema = new Schema({ // Create a EmailSchema
         ref: 'User',
         required: true,
     },
-    content: {
-        type:String, 
-        required: false,
-        unique: false
-    },
+    content: [
+        {
+            type: Object
+        }
+    ],
     sent: {
         type: Boolean,
         default: false
